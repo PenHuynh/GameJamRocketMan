@@ -12,13 +12,13 @@ public class Player : MonoBehaviour
     public GameObject m_model;
     public Camera m_camera;
 
-    public int m_jumpLimit;
 
+    public int m_jumpLimit;
+    public int m_jumpsRemaining;
 
     // Start is called before the first frame update
     void Start()
     {
-
         m_rigidbody2D = m_model.GetComponent<Rigidbody2D>();
     }
 
@@ -26,6 +26,11 @@ public class Player : MonoBehaviour
     void Update()
     {
  
+        
+        
+        // Checking if touching ground
+
+
         if(Input.GetKey(KeyCode.RightArrow))
         {
             m_rigidbody2D.AddForce((Vector3.right * m_moveSpeed) * Time.deltaTime, ForceMode2D.Impulse);
@@ -41,10 +46,10 @@ public class Player : MonoBehaviour
             m_rigidbody2D.AddForce((Vector3.up * -1) * m_fallForce * Time.deltaTime, ForceMode2D.Impulse);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)&& m_jumpLimit > 0)
+        if (Input.GetKeyDown(KeyCode.Space)&& m_jumpsRemaining > 0)
         {
             m_rigidbody2D.AddForce((transform.up * m_jumpForce) * Time.deltaTime, ForceMode2D.Impulse);
-            m_jumpLimit -= 1;
+            m_jumpsRemaining -= 1;
         }
 
 
@@ -59,11 +64,14 @@ public class Player : MonoBehaviour
     }
 
 
-    void LateUpdate()
-    {
-        //this.transform.position = m_model.transform.position;
-    }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Floor")
+        {
+            m_jumpsRemaining = m_jumpLimit;
+        }
+    }
 
 
 }
