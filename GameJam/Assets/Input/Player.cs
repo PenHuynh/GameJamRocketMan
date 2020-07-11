@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     public GameObject m_model;
     public Camera m_camera;
 
+    public int m_jumpLimit;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +25,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+ 
         if(Input.GetKey(KeyCode.RightArrow))
         {
             m_rigidbody2D.AddForce((Vector3.right * m_moveSpeed) * Time.deltaTime, ForceMode2D.Impulse);
@@ -38,13 +41,29 @@ public class Player : MonoBehaviour
             m_rigidbody2D.AddForce((Vector3.up * -1) * m_fallForce * Time.deltaTime, ForceMode2D.Impulse);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)&& m_jumpLimit > 0)
         {
             m_rigidbody2D.AddForce((transform.up * m_jumpForce) * Time.deltaTime, ForceMode2D.Impulse);
+            m_jumpLimit -= 1;
         }
 
+
+
+
+        // Camera movement
         Vector3 cameraPos = new Vector3(m_model.transform.position.x, m_model.transform.position.y, m_camera.transform.position.z);
         m_camera.transform.position = cameraPos;
 
+        // Player container movement
+
     }
+
+
+    void LateUpdate()
+    {
+        //this.transform.position = m_model.transform.position;
+    }
+
+
+
 }
