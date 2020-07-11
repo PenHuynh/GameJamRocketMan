@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,22 +49,29 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space)&& m_jumpsRemaining > 0)
         {
+            RaycastHit hit;
+
+            Vector3 p1 = transform.position;
+
+            float radius = this.GetComponent<CircleCollider2D>().radius;
+
+            if (Physics2D.OverlapCircle(p1, radius))
+            {
+                Debug.Log("Hit");
+            }
+            
+
             m_rigidbody2D.AddForce((transform.up * m_jumpForce) * Time.deltaTime, ForceMode2D.Impulse);
             m_jumpsRemaining -= 1;
         }
 
+        // Camera movement - Removed for the time being.
+        //Vector3 cameraPos = new Vector3(m_model.transform.position.x, m_model.transform.position.y, m_camera.transform.position.z);
+        //m_camera.transform.position = cameraPos;
 
 
-
-        // Camera movement
-        Vector3 cameraPos = new Vector3(m_model.transform.position.x, m_model.transform.position.y, m_camera.transform.position.z);
-        m_camera.transform.position = cameraPos;
-
-        // Player container movement
 
     }
-
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -73,5 +81,5 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    
 }
