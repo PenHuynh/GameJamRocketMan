@@ -492,6 +492,26 @@ PrefabInstance:
       propertyPath: m_jumpForce
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 1232429867246860862, guid: 5ee1797b521fbc34d93abde264d753be,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232429867246860862, guid: 5ee1797b521fbc34d93abde264d753be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1357994535048748037, guid: 5ee1797b521fbc34d93abde264d753be,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1357994535048748037, guid: 5ee1797b521fbc34d93abde264d753be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3952109737439479018, guid: 5ee1797b521fbc34d93abde264d753be,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -567,11 +587,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4671255507961252111, guid: 5ee1797b521fbc34d93abde264d753be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8040673349840493832, guid: 5ee1797b521fbc34d93abde264d753be,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8040673349840493832, guid: 5ee1797b521fbc34d93abde264d753be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1232429866217967355, guid: 5ee1797b521fbc34d93abde264d753be, type: 3}
+    - {fileID: 1232429866217967350, guid: 5ee1797b521fbc34d93abde264d753be, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5ee1797b521fbc34d93abde264d753be, type: 3}
